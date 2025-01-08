@@ -1,67 +1,70 @@
 # Str-Assistant VSCode Extension
+# 字符串助手 VSCode 插件
 
 <img src="static/icon.png" width="128" height="128" alt="插件图标">
 
+A powerful VSCode extension for string manipulation, supporting various string transformation features.
 一个功能强大的 VSCode 字符串转换助手，支持多种字符串转换功能。
 
-## 功能特性
+## 功能特性 | Features
 
-### 大小写转换
-- 全部转换为大写 - 将选中文本全部转换为大写字母
-- 全部转换为小写 - 将选中文本全部转换为小写字母
-- 首字母转换为大写 - 将选中文本的第一个字母转换为大写
-- 首字母转换为小写 - 将选中文本的第一个字母转换为小写
-- 全部首字母转换为大写 - 将选中文本中每个单词的首字母转换为大写
-- 全部首字母转换为小写 - 将选中文本中每个单词的首字母转换为小写
+### Case Conversion | 大小写转换
+- Convert to uppercase | 全部转换为大写 - Convert selected text to uppercase letters
+- Convert to lowercase | 全部转换为小写 - Convert selected text to lowercase letters
+- Capitalize first letter | 首字母转换为大写 - Convert the first letter to uppercase
+- Uncapitalize first letter | 首字母转换为小写 - Convert the first letter to lowercase
+- Capitalize all words | 全部首字母转换为大写 - Convert the first letter of each word to uppercase
+- Uncapitalize all words | 全部首字母转换为小写 - Convert the first letter of each word to lowercase
 
-### 命名风格转换
-- 小驼峰命名 (camelCase) - 例如：`userName`
-- 大驼峰命名 (PascalCase) - 例如：`UserName`
-- 下划线命名 (snake_case) - 例如：`user_name`
-- 中划线命名 (kebab-case) - 例如：`user-name`
+### Naming Style Conversion | 命名风格转换
+- camelCase | 小驼峰命名 - e.g.: `userName`
+- PascalCase | 大驼峰命名 - e.g.: `UserName`
+- snake_case | 下划线命名 - e.g.: `user_name`
+- kebab-case | 中划线命名 - e.g.: `user-name`
 
-### 标点符号转换
-- 中文标点转换为英文 - 将中文标点符号（，。；：""''等）转换为对应的英文标点
+### Punctuation Conversion | 标点符号转换
+- Convert Chinese punctuation to English | 中文标点转换为英文 - Convert Chinese punctuation marks (，。；：""'' etc.) to corresponding English ones
 
-### 行处理功能
-- 删除空行 - 移除文本中的所有空行
-- 删除重复行 - 移除文本中的重复行，保留唯一行
-- 升序排序 - 将多行文本按字母/汉字顺序升序排序
-- 降序排序 - 将多行文本按字母/汉字顺序降序排序
-- 打乱行顺序 - 随机打乱多行文本的顺序
-- 合并多行 - 将多行文本合并为一行，可自定义分隔符
-- 合并多行（带引号）- 将多行文本合并为一行，每行文本加上引号，可选择单引号或双引号
+### Line Processing | 行处理功能
+- Remove empty lines | 删除空行 - Remove all empty lines from text
+- Remove duplicate lines | 删除重复行 - Remove duplicate lines, keeping unique ones
+- Sort ascending | 升序排序 - Sort multiple lines in ascending order by letters/Chinese characters
+- Sort descending | 降序排序 - Sort multiple lines in descending order by letters/Chinese characters
+- Shuffle lines | 打乱行顺序 - Randomly shuffle the order of multiple lines
+- Merge lines | 合并多行 - Merge multiple lines into one, with customizable separator
+- Merge lines with quotes | 合并多行（带引号）- Merge multiple lines into one, adding quotes to each line
 
-### 其他功能
-- 移除所有空格 - 删除文本中的所有空格字符
-- 字符串反转 - 将文本字符顺序反转
-- 复制转换后的文本 - 将转换结果复制到剪贴板而不改变原文本
+### Other Features | 其他功能
+- Remove all spaces | 移除所有空格 - Remove all space characters from text
+- Reverse string | 字符串反转 - Reverse the order of characters in text
+- Copy transformed text | 复制转换后的文本 - Copy the transformed result to clipboard without changing original text
 
-## 使用方法
+## How to Use | 使用方法
 
-1. 在编辑器中选择要转换的文本
-2. 右键点击选中文本，在上下文菜单中选择"字符串转换"
-3. 选择需要的转换功能
-4. 或使用命令面板(Ctrl+Shift+P)输入相应命令
+1. Select text in editor | 在编辑器中选择要转换的文本
+2. Right-click and select "String Assistant" | 右键点击选中文本，在上下文菜单中选择"字符串助手"
+3. Choose desired transformation | 选择需要的转换功能
+4. Or use command palette (Ctrl+Shift+P) | 或使用命令面板(Ctrl+Shift+P)输入相应命令
 
-## 配置选项
+## Configuration | 配置选项
 
+You can customize the following options in VSCode settings:
 可以在 VSCode 设置中自定义以下选项：
 
-### JSON处理设置
-- JSON文件中是否只处理内容：
-  - 启用后，在处理JSON文件时只会转换值，不会转换属性名
-  - 禁用时会同时转换属性名和值
+### JSON Processing Settings | JSON处理设置
+- Process content only in JSON files | JSON文件中是否只处理内容：
+  - When enabled, only values will be transformed in JSON files | 启用后，在处理JSON文件时只会转换值，不会转换属性名
+  - When disabled, both keys and values will be transformed | 禁用时会同时转换属性名和值
 
-### 右键菜单显示
-- 控制右键菜单中显示哪些功能类别：
-  - 大小写转换功能
-  - 标点符号转换功能
-  - 行处理功能
-  - 空格处理功能
-  - 命名转换功能
-  - 其他功能
+### Context Menu Display | 右键菜单显示
+- Control which feature categories to show in context menu | 控制右键菜单中显示哪些功能类别：
+  - Case conversion features | 大小写转换功能
+  - Punctuation conversion features | 标点符号转换功能
+  - Line processing features | 行处理功能
+  - Space processing features | 空格处理功能
+  - Naming conversion features | 命名转换功能
+  - Other features | 其他功能
 
-### 合并行设置
-- 自定义合并行时的分隔符
-- 选择合并行时使用的引号类型（单引号/双引号/无引号）
+### Line Merging Settings | 合并行设置
+- Customize separator for line merging | 自定义合并行时的分隔符
+- Choose quote type for line merging (single/double/none) | 选择合并行时使用的引号类型（单引号/双引号/无引号）

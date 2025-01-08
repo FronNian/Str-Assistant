@@ -1,0 +1,8 @@
+{
+  "str-transform.allToUpper": "全部转换为大写",
+  "str-transform.allToLower": "全部转换为小写",
+  "str-transform.headToUpper": "首字母转换为大写",
+  "str-transform.headToLower": "首字母转换为小写",
+  "str-transform.allHeadToUpper": "全部首字母转换为大写",
+  "str-transform.allHeadToLower": "全部首字母转换为小写"
+}

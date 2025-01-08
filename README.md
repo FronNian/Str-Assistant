@@ -45,6 +45,36 @@ A powerful VSCode extension for string manipulation, supporting various string t
 2. Right-click and select "String Assistant" | 右键点击选中文本，在上下文菜单中选择"字符串助手"
 3. Choose desired transformation | 选择需要的转换功能
 4. Or use command palette (Ctrl+Shift+P) | 或使用命令面板(Ctrl+Shift+P)输入相应命令
+5. Or use keyboard shortcuts | 或使用键盘快捷键
+
+## Keyboard Shortcuts | 键盘快捷键
+
+You can customize keyboard shortcuts for all features in VSCode Keyboard Shortcuts settings:
+可以在 VSCode 键盘快捷方式设置中自定义所有功能的快捷键：
+
+1. Open Command Palette (Ctrl+Shift+P) | 打开命令面板
+2. Type "Preferences: Open Keyboard Shortcuts" | 输入 "首选项：打开键盘快捷方式"
+3. Search for "String Assistant" | 搜索 "字符串助手"
+4. Click the "+" icon to add a shortcut | 点击 "+" 图标添加快捷键
+
+Default shortcuts can be customized for: | 可以自定义的默认快捷键包括：
+
+### Text Case | 文本大小写
+- Convert to uppercase | 转换为大写 (`Ctrl+K Ctrl+U`)
+- Convert to lowercase | 转换为小写 (`Ctrl+K Ctrl+L`)
+- Capitalize first letter | 首字母大写 (`Ctrl+K Ctrl+H`)
+- Uncapitalize first letter | 首字母小写 (`Ctrl+K Ctrl+J`)
+- Capitalize all words | 所有单词首字母大写 (`Ctrl+K Ctrl+I`)
+- Uncapitalize all words | 所有单词首字母小写 (`Ctrl+K Ctrl+K`)
+
+### Naming Style | 命名风格
+- Convert to camelCase | 转换为小驼峰 (`Ctrl+K Ctrl+,`)
+- Convert to PascalCase | 转换为大驼峰 (`Ctrl+K Ctrl+.`)
+- Convert to snake_case | 转换为下划线 (`Ctrl+K Ctrl+/`)
+- Convert to kebab-case | 转换为中划线 (`Ctrl+K Ctrl+;`)
+
+> Note: All shortcuts only work when text is selected
+> 注意：所有快捷键仅在选中文本时生效
 
 ## Configuration | 配置选项
 

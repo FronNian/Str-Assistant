@@ -106,6 +106,58 @@
         "title": "合并多行（带引号）"
       }
     ],
+    "keybindings": [
+      {
+        "command": "str-transform.allToUpper",
+        "key": "ctrl+k ctrl+u",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "str-transform.allToLower",
+        "key": "ctrl+k ctrl+l",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "str-transform.headToUpper",
+        "key": "ctrl+k ctrl+h",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "str-transform.headToLower",
+        "key": "ctrl+k ctrl+j",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "str-transform.allHeadToUpper",
+        "key": "ctrl+k ctrl+i",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "str-transform.allHeadToLower",
+        "key": "ctrl+k ctrl+k",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "str-transform.toCamelCase",
+        "key": "ctrl+k ctrl+,",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "str-transform.toPascalCase",
+        "key": "ctrl+k ctrl+.",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "str-transform.toSnakeCase",
+        "key": "ctrl+k ctrl+/",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "str-transform.toKebabCase",
+        "key": "ctrl+k ctrl+;",
+        "when": "editorHasSelection"
+      }
+    ],
     "menus": {
       "editor/context": [
         {

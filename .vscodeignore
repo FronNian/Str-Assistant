@@ -11,3 +11,4 @@ tsconfig.json
 node_modules/**
 !node_modules/@types/**
 !out/**
+!static/icon.png

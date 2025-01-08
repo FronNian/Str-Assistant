@@ -2,13 +2,14 @@
   "name": "str-assistant",
   "private": true,
   "license": "MIT",
+  "icon": "static/icon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/FronNian/Str-Assistant"
   },
-  "publisher": "FronNian/封念",
-  "displayName": "Str-Assistant",
-  "description": "vsCode字符串转换助手，英文大小写转换，英文字符串头部快速转换，驼峰命名转换",
+  "publisher": "fronnian",
+  "displayName": "String Assistant - 字符串助手",
+  "description": "一个功能强大的 VSCode 字符串处理工具，支持多种字符串转换功能：大小写转换、命名风格转换（驼峰、下划线等）、中英文标点转换、多行文本处理（排序、去重、合并）等。让文本处理更简单高效。",
   "version": "1.0.0",
   "engines": {
     "vscode": "^1.80.0"
@@ -208,11 +209,11 @@
     "submenus": [
       {
         "id": "str-transform.menu",
-        "label": "字符串转换"
+        "label": "字符串助手"
       }
     ],
     "configuration": {
-      "title": "字符串转换助手",
+      "title": "字符串助手",
       "properties": {
         "strAssistant.contextMenu": {
           "type": "object",

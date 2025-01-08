@@ -13,6 +13,11 @@ export function activate(context: vscode.ExtensionContext) {
       return;
     }
     
+    // 检查是否是JSON文件且需要只处理内容
+    const isJsonFile = editor.document.languageId === 'json';
+    const config = vscode.workspace.getConfiguration('strAssistant');
+    const contentOnly = config.get('jsonProcessing.contentOnly');
+    
     // 预处理文本，处理不规则的行
     const preprocessText = (text: string): string => {
       // 统一换行符
@@ -24,6 +29,39 @@ export function activate(context: vscode.ExtensionContext) {
       return text;
     };
     
+    // 处理JSON文本
+    const processJsonText = (text: string, transformer: (text: string) => string): string => {
+      try {
+        // 尝试解析JSON
+        const jsonObj = JSON.parse(text);
+        
+        // 递归处理JSON对象
+        const processJsonObject = (obj: any): any => {
+          if (typeof obj === 'string') {
+            return transformer(obj);
+          }
+          if (Array.isArray(obj)) {
+            return obj.map(item => processJsonObject(item));
+          }
+          if (typeof obj === 'object' && obj !== null) {
+            const result: any = {};
+            for (const [key, value] of Object.entries(obj)) {
+              // 如果只处理内容，key保持不变
+              const newKey = contentOnly ? key : processJsonObject(key);
+              result[newKey] = processJsonObject(value);
+            }
+            return result;
+          }
+          return obj;
+        };
+        
+        return JSON.stringify(processJsonObject(jsonObj), null, 2);
+      } catch (e) {
+        // 如果不是有效的JSON，按普通文本处理
+        return transformer(text);
+      }
+    };
+    
     try {
       const processedText = preprocessText(text);
       if (!processedText) {
@@ -31,11 +69,11 @@ export function activate(context: vscode.ExtensionContext) {
         return;
       }
       
-      const newText = transformer(processedText);
+      const newText = isJsonFile ? processJsonText(processedText, transformer) : transformer(processedText);
+      
       return editor.edit(editBuilder => {
         editBuilder.replace(selection, newText);
       }).then(() => {
-        // 操作成功后显示状态
         vscode.window.setStatusBarMessage('文本处理成功', 2000);
       });
     } catch (error) {
@@ -130,7 +168,7 @@ export function activate(context: vscode.ExtensionContext) {
       vscode.window.showInformationMessage('请先选择文本');
     }
   });
-  // 全部首字母转换成小写 
+  // 全部首字母转换成小写
   const allHeadToLower = vscode.commands.registerCommand('str-transform.allHeadToLower', () => {
     const editor = vscode.window.activeTextEditor;
     if (editor) {

@@ -215,6 +215,20 @@
     "configuration": {
       "title": "字符串助手",
       "properties": {
+        "strAssistant.jsonProcessing": {
+          "type": "object",
+          "default": {
+            "contentOnly": false
+          },
+          "properties": {
+            "contentOnly": {
+              "type": "boolean",
+              "default": false,
+              "description": "JSON文件中是否只处理内容而不处理属性名"
+            }
+          },
+          "description": "JSON处理相关设置"
+        },
         "strAssistant.contextMenu": {
           "type": "object",
           "default": {

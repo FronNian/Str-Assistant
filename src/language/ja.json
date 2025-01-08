@@ -1,0 +1,8 @@
+{
+  "str-transform.allToUpper": "すべて大文字に変換",
+  "str-transform.allToLower": "すべて小文字に変換",
+  "str-transform.headToUpper": "先頭文字を大文字に変換",
+  "str-transform.headToLower": "先頭文字を小文字に変換",
+  "str-transform.allHeadToUpper": "各単語の先頭文字を大文字に変換",
+  "str-transform.allHeadToLower": "各単語の先頭文字を小文字に変換"
+} 

@@ -19,29 +19,45 @@
     "commands": [
       {
         "command": "str-transform.allToUpper",
-        "title": "All To Upper"
+        "title": "%str-transform.allToUpper%"
       },
       {
         "command": "str-transform.allToLower",
-        "title": "All To Lower"
+        "title": "%str-transform.allToLower%"
       },
       {
         "command": "str-transform.headToUpper",
-        "title": "Head To Upper"
+        "title": "%str-transform.headToUpper%"
       },
       {
         "command": "str-transform.headToLower",
-        "title": "Head To Lower"
+        "title": "%str-transform.headToLower%"
       },
       {
         "command": "str-transform.allHeadToUpper",
-        "title": "All Head To Upper"
+        "title": "%str-transform.allHeadToUpper%"
       },
       {
         "command": "str-transform.allHeadToLower",
-        "title": "All Head To Lower"
+        "title": "%str-transform.allHeadToLower%"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Str-Assistant",
+      "properties": {
+        "strAssistant.language": {
+          "type": "string",
+          "default": "en",
+          "enum": ["en", "zh-cn", "ja"],
+          "enumDescriptions": [
+            "English",
+            "简体中文",
+            "日本語"
+          ],
+          "description": "Select display language / 选择显示语言 / 表示言語を選択"
+        }
+      }
+    }
   },"scripts": {
     "vscode:prepublish": "npm run package",
     "compile": "webpack",

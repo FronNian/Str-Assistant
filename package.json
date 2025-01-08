@@ -1,5 +1,6 @@
 {
   "name": "str-assistant",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/FronNian/Str-Assistant"
@@ -14,55 +15,277 @@
   "categories": [
     "Other"
   ],
-  "main":"./src/extension.js",
+  "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
         "command": "str-transform.allToUpper",
-        "title": "%str-transform.allToUpper%"
+        "title": "全部转换为大写"
       },
       {
         "command": "str-transform.allToLower",
-        "title": "%str-transform.allToLower%"
+        "title": "全部转换为小写"
       },
       {
         "command": "str-transform.headToUpper",
-        "title": "%str-transform.headToUpper%"
+        "title": "首字母转换为大写"
       },
       {
         "command": "str-transform.headToLower",
-        "title": "%str-transform.headToLower%"
+        "title": "首字母转换为小写"
       },
       {
         "command": "str-transform.allHeadToUpper",
-        "title": "%str-transform.allHeadToUpper%"
+        "title": "全部首字母转换为大写"
       },
       {
         "command": "str-transform.allHeadToLower",
-        "title": "%str-transform.allHeadToLower%"
+        "title": "全部首字母转换为小写"
+      },
+      {
+        "command": "str-transform.toCamelCase",
+        "title": "转换为小驼峰命名"
+      },
+      {
+        "command": "str-transform.toPascalCase",
+        "title": "转换为大驼峰命名"
+      },
+      {
+        "command": "str-transform.toSnakeCase",
+        "title": "转换为下划线命名"
+      },
+      {
+        "command": "str-transform.toKebabCase",
+        "title": "转换为中划线命名"
+      },
+      {
+        "command": "str-transform.reverse",
+        "title": "反转字符串"
+      },
+      {
+        "command": "str-transform.removeSpaces",
+        "title": "移除所有空格"
+      },
+      {
+        "command": "str-transform.copyTransformed",
+        "title": "复制转换后的文本"
+      },
+      {
+        "command": "str-transform.toPunctuation",
+        "title": "中文标点转换为英文"
+      },
+      {
+        "command": "str-transform.removeEmptyLines",
+        "title": "删除空行"
+      },
+      {
+        "command": "str-transform.removeDuplicateLines",
+        "title": "删除重复行"
+      },
+      {
+        "command": "str-transform.sortAscending",
+        "title": "升序排序"
+      },
+      {
+        "command": "str-transform.sortDescending",
+        "title": "降序排序"
+      },
+      {
+        "command": "str-transform.shuffleLines",
+        "title": "打乱行顺序"
+      },
+      {
+        "command": "str-transform.mergeLines",
+        "title": "合并多行"
+      },
+      {
+        "command": "str-transform.mergeLinesWithQuotes",
+        "title": "合并多行（带引号）"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorHasSelection",
+          "submenu": "str-transform.menu"
+        }
+      ],
+      "str-transform.menu": [
+        {
+          "command": "str-transform.allToUpper",
+          "group": "1_case@1"
+        },
+        {
+          "command": "str-transform.allToLower",
+          "group": "1_case@2"
+        },
+        {
+          "command": "str-transform.headToUpper",
+          "group": "2_modification"
+        },
+        {
+          "command": "str-transform.headToLower",
+          "group": "2_modification"
+        },
+        {
+          "command": "str-transform.allHeadToUpper",
+          "group": "3_modification"
+        },
+        {
+          "command": "str-transform.allHeadToLower",
+          "group": "3_modification"
+        },
+        {
+          "command": "str-transform.toCamelCase",
+          "group": "2_naming@1"
+        },
+        {
+          "command": "str-transform.toPascalCase",
+          "group": "4_case"
+        },
+        {
+          "command": "str-transform.toSnakeCase",
+          "group": "4_case"
+        },
+        {
+          "command": "str-transform.toKebabCase",
+          "group": "4_case"
+        },
+        {
+          "command": "str-transform.reverse",
+          "group": "5_transform"
+        },
+        {
+          "command": "str-transform.removeSpaces",
+          "group": "5_transform"
+        },
+        {
+          "command": "str-transform.copyTransformed",
+          "group": "5_other@1"
+        },
+        {
+          "command": "str-transform.toPunctuation",
+          "group": "3_punctuation@1"
+        },
+        {
+          "command": "str-transform.removeEmptyLines",
+          "group": "4_lines@1"
+        },
+        {
+          "command": "str-transform.removeDuplicateLines",
+          "group": "8_lines",
+          "when": "config.strAssistant.contextMenu.lines"
+        },
+        {
+          "command": "str-transform.sortAscending",
+          "group": "8_lines",
+          "when": "config.strAssistant.contextMenu.lines"
+        },
+        {
+          "command": "str-transform.sortDescending",
+          "group": "8_lines",
+          "when": "config.strAssistant.contextMenu.lines"
+        },
+        {
+          "command": "str-transform.shuffleLines",
+          "group": "8_lines",
+          "when": "config.strAssistant.contextMenu.lines"
+        },
+        {
+          "command": "str-transform.mergeLines",
+          "group": "8_lines",
+          "when": "config.strAssistant.contextMenu.lines"
+        },
+        {
+          "command": "str-transform.mergeLinesWithQuotes",
+          "group": "8_lines",
+          "when": "config.strAssistant.contextMenu.lines"
+        }
+      ]
+    },
+    "submenus": [
+      {
+        "id": "str-transform.menu",
+        "label": "字符串转换"
       }
     ],
     "configuration": {
-      "title": "Str-Assistant",
+      "title": "字符串转换助手",
       "properties": {
-        "strAssistant.language": {
-          "type": "string",
-          "default": "en",
-          "enum": ["en", "zh-cn", "ja"],
-          "enumDescriptions": [
-            "English",
-            "简体中文",
-            "日本語"
-          ],
-          "description": "Select display language / 选择显示语言 / 表示言語を選択"
+        "strAssistant.contextMenu": {
+          "type": "object",
+          "default": {
+            "case": true,
+            "punctuation": true,
+            "lines": true,
+            "spaces": true,
+            "naming": true,
+            "other": true
+          },
+          "properties": {
+            "case": {
+              "type": "boolean",
+              "default": true,
+              "description": "显示大小写转换功能"
+            },
+            "punctuation": {
+              "type": "boolean",
+              "default": true,
+              "description": "显示标点符号转换功能"
+            },
+            "lines": {
+              "type": "boolean",
+              "default": true,
+              "description": "显示行处理功能"
+            },
+            "spaces": {
+              "type": "boolean",
+              "default": true,
+              "description": "显示空格处理功能"
+            },
+            "naming": {
+              "type": "boolean",
+              "default": true,
+              "description": "显示命名转换功能"
+            },
+            "other": {
+              "type": "boolean",
+              "default": true,
+              "description": "显示其他功能"
+            }
+          },
+          "description": "控制右键菜单中显示的功能"
+        },
+        "strAssistant.mergeLine": {
+          "type": "object",
+          "default": {
+            "separator": ",",
+            "quote": "\""
+          },
+          "properties": {
+            "separator": {
+              "type": "string",
+              "default": ",",
+              "description": "合并行时使用的分隔符"
+            },
+            "quote": {
+              "type": "string",
+              "enum": ["\"", "'", "none"],
+              "default": "\"",
+              "description": "合并行时使用的引号类型"
+            }
+          },
+          "description": "合并行的相关设置"
         }
       }
     }
-  },"scripts": {
+  },
+  "scripts": {
+    "clean": "rimraf out",
     "vscode:prepublish": "npm run package",
-    "compile": "webpack",
+    "compile": "tsc -p ./",
     "watch": "webpack --watch",
-    "package": "webpack --mode production --devtool hidden-source-map",
+    "package": "npm run clean && webpack --mode production --devtool hidden-source-map",
     "compile-tests": "tsc -p . --outDir out",
     "watch-tests": "tsc -p . -w --outDir out",
     "pretest": "npm run compile-tests && npm run compile && npm run lint",
@@ -83,6 +306,7 @@
     "ts-loader": "^9.3.1",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0",
-    "@vscode/test-electron": "^2.1.5"
+    "@vscode/test-electron": "^2.1.5",
+    "rimraf": "^3.0.2"
   }
 }

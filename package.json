@@ -104,6 +104,38 @@
       {
         "command": "str-transform.mergeLinesWithQuotes",
         "title": "合并多行（带引号）"
+      },
+      {
+        "command": "str-transform.urlEncode",
+        "title": "URL编码"
+      },
+      {
+        "command": "str-transform.urlDecode",
+        "title": "URL解码"
+      },
+      {
+        "command": "str-transform.base64Encode",
+        "title": "Base64编码"
+      },
+      {
+        "command": "str-transform.base64Decode",
+        "title": "Base64解码"
+      },
+      {
+        "command": "str-transform.stringStats",
+        "title": "字符串统计"
+      },
+      {
+        "command": "str-transform.jsonFormat",
+        "title": "JSON格式化"
+      },
+      {
+        "command": "str-transform.jsonMinify",
+        "title": "JSON压缩"
+      },
+      {
+        "command": "str-transform.textAlign",
+        "title": "文本对齐"
       }
     ],
     "keybindings": [
@@ -255,6 +287,38 @@
           "command": "str-transform.mergeLinesWithQuotes",
           "group": "8_lines",
           "when": "config.strAssistant.contextMenu.lines"
+        },
+        {
+          "command": "str-transform.urlEncode",
+          "group": "6_encoding@1"
+        },
+        {
+          "command": "str-transform.urlDecode",
+          "group": "6_encoding@2"
+        },
+        {
+          "command": "str-transform.base64Encode",
+          "group": "6_encoding@3"
+        },
+        {
+          "command": "str-transform.base64Decode",
+          "group": "6_encoding@4"
+        },
+        {
+          "command": "str-transform.stringStats",
+          "group": "7_tools@1"
+        },
+        {
+          "command": "str-transform.jsonFormat",
+          "group": "7_tools@2"
+        },
+        {
+          "command": "str-transform.jsonMinify",
+          "group": "7_tools@3"
+        },
+        {
+          "command": "str-transform.textAlign",
+          "group": "7_tools@4"
         }
       ]
     },
@@ -345,6 +409,16 @@
             }
           },
           "description": "合并行的相关设置"
+        },
+        "strAssistant.timestamp.timezone": {
+          "type": "string",
+          "default": "",
+          "description": "时间戳预览使用的时区，留空则使用系统时区。例如：Asia/Shanghai"
+        },
+        "strAssistant.timestamp.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "是否启用时间戳预览功能"
         }
       }
     }

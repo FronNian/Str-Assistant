@@ -39,6 +39,25 @@ A powerful VSCode extension for string manipulation, supporting various string t
 - Reverse string | 字符串反转 - Reverse the order of characters in text
 - Copy transformed text | 复制转换后的文本 - Copy the transformed result to clipboard without changing original text
 
+### Timestamp Preview | 时间戳预览
+- Automatically shows human-readable date/time next to timestamps | 在时间戳旁边自动显示可读的日期时间
+- Supports both seconds (10 digits) and milliseconds (13 digits) timestamps | 支持秒级（10位）和毫秒级（13位）时间戳
+- Configurable timezone | 可配置时区
+- Works in all file types | 适用于所有文件类型
+
+#### Configuration | 配置
+- `strAssistant.timestamp.timezone`: Set timezone for timestamp preview (e.g., "Asia/Shanghai") | 设置时间戳预览使用的时区（如："Asia/Shanghai"）
+- `strAssistant.timestamp.enabled`: Enable/disable timestamp preview | 启用/禁用时间戳预览功能
+
+### Encoding/Decoding | 编码解码
+- URL Encode/Decode | URL编码/解码 - Convert text to/from URL-encoded format
+- Base64 Encode/Decode | Base64编码/解码 - Convert text to/from Base64 format
+
+### Text Tools | 文本工具
+- String Statistics | 字符串统计 - Count characters, words, lines, etc.
+- JSON Format/Minify | JSON格式化/压缩 - Format or compress JSON text
+- Text Alignment | 文本对齐 - Align text left, center, or right with custom width
+
 ## How to Use | 使用方法
 
 1. Select text in editor | 在编辑器中选择要转换的文本

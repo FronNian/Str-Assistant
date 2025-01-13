@@ -563,7 +563,7 @@ export function activate(context: vscode.ExtensionContext) {
         
         // 获取用户配置的时区
         const config = vscode.workspace.getConfiguration('strAssistant');
-        const timezone = config.get('timestamp.timezone') || Intl.DateTimeFormat().resolvedOptions().timeZone;
+        const timezone = config.get<string>('timestamp.timezone') || 'Asia/Shanghai';
         
         // 遍历可视区域内的每一行
         for (let i = viewPort.start.line; i <= viewPort.end.line; i++) {
@@ -618,7 +618,7 @@ export function activate(context: vscode.ExtensionContext) {
 
                 // 格式化日期时间
                 const formattedDate = new Intl.DateTimeFormat('zh-CN', {
-                  timeZone: timezone || 'Asia/Shanghai',
+                  timeZone: timezone as string,
                   year: 'numeric',
                   month: '2-digit',
                   day: '2-digit',
@@ -742,22 +742,25 @@ export function activate(context: vscode.ExtensionContext) {
         punctuation: (text.match(/[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/g) || []).length
       };
 
-      // 使用更友好的展示方式
-      const message = new vscode.MarkdownString(`
-### 文本统计信息
-- 总字符数：${stats.characters}
-- 不含空格字符数：${stats.charactersNoSpaces}
-- 单词数：${stats.words}
-- 行数：${stats.lines}
-- 中文字符：${stats.chinese}
-- 英文字母：${stats.letters}
-- 数字：${stats.numbers}
-- 空格：${stats.spaces}
-- 标点符号：${stats.punctuation}
-      `);
+      // 使用普通字符串而不是 MarkdownString
+      const messageText = [
+        '文本统计信息',
+        `总字符数：${stats.characters}`,
+        `不含空格字符数：${stats.charactersNoSpaces}`,
+        `单词数：${stats.words}`,
+        `行数：${stats.lines}`,
+        `中文字符：${stats.chinese}`,
+        `英文字母：${stats.letters}`,
+        `数字：${stats.numbers}`,
+        `空格：${stats.spaces}`,
+        `标点符号：${stats.punctuation}`
+      ].join('\n');
 
-      // 使用更好的展示方式
-      vscode.window.showInformationMessage('文本统计完成', { modal: true, detail: message.value });
+      // 使用普通的信息展示
+      vscode.window.showInformationMessage('文本统计完成', {
+        modal: true,
+        detail: messageText
+      });
     }
   });
 

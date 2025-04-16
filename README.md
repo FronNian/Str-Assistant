@@ -57,6 +57,14 @@ A powerful VSCode extension for string manipulation, supporting various string t
 - String Statistics | 字符串统计 - Count characters, words, lines, etc.
 - JSON Format/Minify | JSON格式化/压缩 - Format or compress JSON text
 - Text Alignment | 文本对齐 - Align text left, center, or right with custom width
+- Copy JSON Structure | 复制JSON结构 - Copy the structure of a JSON object, replacing all values with their type placeholders
+
+### JSON Processing | JSON处理
+- Format JSON | JSON格式化 - Format JSON text with proper indentation
+- Minify JSON | JSON压缩 - Remove all whitespace from JSON text
+- Capitalize JSON Values | JSON值首字母大写 - Convert the first letter of all string values to uppercase
+- Uncapitalize JSON Values | JSON值首字母小写 - Convert the first letter of all string values to lowercase
+- Copy JSON Structure | 复制JSON结构 - Copy the structure of a JSON object, replacing all values with their type placeholders (empty string for strings, 0 for numbers, false for booleans)
 
 ## How to Use | 使用方法
 

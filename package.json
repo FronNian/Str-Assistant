@@ -136,6 +136,18 @@
       {
         "command": "str-transform.textAlign",
         "title": "文本对齐"
+      },
+      {
+        "command": "str-transform.jsonValueCapitalize",
+        "title": "JSON值首字母大写"
+      },
+      {
+        "command": "str-transform.jsonValueUncapitalize",
+        "title": "JSON值首字母小写"
+      },
+      {
+        "command": "str-transform.copyJsonStructure",
+        "title": "复制JSON结构"
       }
     ],
     "keybindings": [
@@ -319,6 +331,21 @@
         {
           "command": "str-transform.textAlign",
           "group": "7_tools@4"
+        },
+        {
+          "command": "str-transform.jsonValueCapitalize",
+          "group": "7_tools@5",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "str-transform.jsonValueUncapitalize",
+          "group": "7_tools@6",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "str-transform.copyJsonStructure",
+          "group": "7_tools@7",
+          "when": "editorHasSelection"
         }
       ]
     },

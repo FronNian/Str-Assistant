@@ -851,6 +851,84 @@ export function activate(context: vscode.ExtensionContext) {
     }
   });
 
+  // 添加 JSON 值首字母大写转换功能
+  const jsonValueCapitalize = vscode.commands.registerCommand('str-transform.jsonValueCapitalize', () => {
+    const editor = vscode.window.activeTextEditor;
+    if (editor) {
+      processText(editor, text => {
+        try {
+          // 解析 JSON
+          const obj = JSON.parse(text);
+
+          // 递归处理 JSON 对象中的字符串值
+          const processValues = (data: any): any => {
+            if (typeof data === 'string') {
+              // 对字符串值进行首字母大写转换
+              return data.charAt(0).toUpperCase() + data.slice(1);
+            }
+            if (Array.isArray(data)) {
+              return data.map(item => processValues(item));
+            }
+            if (typeof data === 'object' && data !== null) {
+              const result: any = {};
+              for (const [key, value] of Object.entries(data)) {
+                // 保持键名不变，只处理值
+                result[key] = processValues(value);
+              }
+              return result;
+            }
+            return data;
+          };
+
+          const processed = processValues(obj);
+          return JSON.stringify(processed, null, 2);
+        } catch (error) {
+          vscode.window.showErrorMessage(`JSON处理失败：${error}`);
+          return text;
+        }
+      });
+    }
+  });
+
+  // 添加 JSON 值首字母小写转换功能
+  const jsonValueUncapitalize = vscode.commands.registerCommand('str-transform.jsonValueUncapitalize', () => {
+    const editor = vscode.window.activeTextEditor;
+    if (editor) {
+      processText(editor, text => {
+        try {
+          // 解析 JSON
+          const obj = JSON.parse(text);
+
+          // 递归处理 JSON 对象中的字符串值
+          const processValues = (data: any): any => {
+            if (typeof data === 'string') {
+              // 对字符串值进行首字母小写转换
+              return data.charAt(0).toLowerCase() + data.slice(1);
+            }
+            if (Array.isArray(data)) {
+              return data.map(item => processValues(item));
+            }
+            if (typeof data === 'object' && data !== null) {
+              const result: any = {};
+              for (const [key, value] of Object.entries(data)) {
+                // 保持键名不变，只处理值
+                result[key] = processValues(value);
+              }
+              return result;
+            }
+            return data;
+          };
+
+          const processed = processValues(obj);
+          return JSON.stringify(processed, null, 2);
+        } catch (error) {
+          vscode.window.showErrorMessage(`JSON处理失败：${error}`);
+          return text;
+        }
+      });
+    }
+  });
+
   // 注册所有命令
   context.subscriptions.push(
     allToUpper,
@@ -881,6 +959,60 @@ export function activate(context: vscode.ExtensionContext) {
     stringStats,
     jsonFormat,
     jsonMinify,
-    textAlign
+    textAlign,
+    jsonValueCapitalize,
+    jsonValueUncapitalize
+  );
+
+  // 添加新的函数来处理JSON结构复制功能
+  async function copyJsonStructure() {
+    const editor = vscode.window.activeTextEditor;
+    if (!editor) {
+      vscode.window.showErrorMessage('请先选择要处理的JSON文本');
+      return;
+    }
+
+    const selection = editor.selection;
+    const text = editor.document.getText(selection);
+
+    try {
+      const jsonObj = JSON.parse(text);
+      const processedJson = processJsonStructure(jsonObj);
+      const result = JSON.stringify(processedJson, null, 2);
+      
+      await vscode.env.clipboard.writeText(result);
+      vscode.window.showInformationMessage('JSON结构已复制到剪贴板');
+    } catch (error) {
+      vscode.window.showErrorMessage('无效的JSON格式');
+    }
+  }
+
+  function processJsonStructure(obj: any): any {
+    if (Array.isArray(obj)) {
+      return obj.length > 0 ? [processJsonStructure(obj[0])] : [];
+    } else if (obj !== null && typeof obj === 'object') {
+      const result: any = {};
+      for (const key in obj) {
+        result[key] = processJsonStructure(obj[key]);
+      }
+      return result;
+    } else {
+      // 根据类型返回对应的占位值
+      switch (typeof obj) {
+        case 'string':
+          return '';
+        case 'number':
+          return 0;
+        case 'boolean':
+          return false;
+        default:
+          return null;
+      }
+    }
+  }
+
+  // 注册新的命令
+  context.subscriptions.push(
+    vscode.commands.registerCommand('str-transform.copyJsonStructure', copyJsonStructure)
   );
 }
